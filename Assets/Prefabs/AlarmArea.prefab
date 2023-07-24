@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 9123835912717682750}
   - component: {fileID: 9123835912717682753}
   - component: {fileID: 9123835912717682752}
-  - component: {fileID: 9123835912717682748}
+  - component: {fileID: 2467744499220579417}
+  - component: {fileID: 4541037273066605203}
+  - component: {fileID: 5689157927060288443}
   - component: {fileID: 9123835912717682751}
   m_Layer: 0
   m_Name: AlarmArea
@@ -27,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9123835912717682755}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.996, y: 0.2, z: 0}
   m_LocalScale: {x: 4.3148394, y: 4.3148394, z: 4.3148394}
   m_ConstrainProportionsScale: 0
@@ -103,7 +105,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &9123835912717682748
+--- !u!114 &2467744499220579417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,17 +117,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055c295125f97b148aa2ff5dae3a4c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _secondsToActivate: 5
-  _recoverySpeedModifier: 0.5
+  _secondsToActivate: 2
+  _recoverySpeedModifier: 1
   _onEnterEvent:
     m_PersistentCalls:
       m_Calls: []
   _onStayEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9123835912717682751}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
+      - m_Target: {fileID: 4541037273066605203}
+        m_TargetAssemblyTypeName: LerpedColorChanger, Assembly-CSharp
+        m_MethodName: ChangeColorReversed
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -135,14 +137,40 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onActiveEvent:
+  _onActivateEvent:
     m_PersistentCalls:
       m_Calls: []
   _onAwayEvent:
     m_PersistentCalls:
       m_Calls: []
-  _isActiveCanBeActiveOnce: 0
-  _isStayEventActiveWhileTimerNotInZero: 0
+  _isCanBeActivatedMultipleTimes: 0
+  _isStayEventActiveWhileTimeRecovering: 0
+--- !u!114 &4541037273066605203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9123835912717682755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405b849dfbdd7d1499da63236622eccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetColor: {r: 1, g: 0, b: 0, a: 0.39215687}
+--- !u!114 &5689157927060288443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9123835912717682755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bfe3d984b1f3b40b962a2e909bb669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _secondsToMaxVolume: 0
 --- !u!82 &9123835912717682751
 AudioSource:
   m_ObjectHideFlags: 0
@@ -153,7 +181,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a1c5c3747c0c19f4994a57e4f4172971, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 16dc87a04aa2c9b4fb41c5a43b3a0706, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1

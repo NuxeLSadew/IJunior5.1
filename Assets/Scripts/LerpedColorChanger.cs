@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class LerpedColorChanger : MonoBehaviour
 {
     [SerializeField] private Color _targetColor;

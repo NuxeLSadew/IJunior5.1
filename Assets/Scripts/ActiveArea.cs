@@ -12,7 +12,6 @@ public class ActiveArea : MonoBehaviour
     [SerializeField] private UnityEvent _onAwayEvent;
     [SerializeField] private bool _isCanBeActivatedMultipleTimes;
     [SerializeField] private bool _isStayEventActiveWhileTimeRecovering;
-    [SerializeField] private string _activatorTag;
 
     private float _currentTimer;
     private bool _isCollisionStay;
@@ -41,7 +40,7 @@ public class ActiveArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == _activatorTag)
+        if (collision.TryGetComponent<Movement>(out _))
         {
             _onEnterEvent.Invoke();
         }
@@ -49,7 +48,7 @@ public class ActiveArea : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == _activatorTag)
+        if (collision.TryGetComponent<Movement>(out _))
         {
             _isCollisionStay = true;
 
@@ -62,7 +61,7 @@ public class ActiveArea : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == _activatorTag)
+        if (collision.TryGetComponent<Movement>(out _))
         {
             _onAwayEvent.Invoke();
             _isCollisionStay = false;
